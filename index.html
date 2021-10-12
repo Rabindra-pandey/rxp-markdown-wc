@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lit-element code sample</title>
+  </head>
+
+  <body>
+    <textarea id="markDownSrc" type="aria" cols="30" rows="4">
+## Welcome to *renderMarkDown*</textarea
+    >
+    <input
+      type="button"
+      onclick="renderMarkDown()"
+      value="Render Markdown"
+      style="display: block; margin: 5px 0"
+    />
+
+    <script type="module">
+      function renderMarkDown() {
+        const content = document.getElementById('markDownSrc').value;
+        document.getElementById('md').setAttribute('markdown', content);
+      }
+    </script>
+    <rnp-markdown id="md" markdown="## Hello World"> </rnp-markdown>
+  </body>
+</html>

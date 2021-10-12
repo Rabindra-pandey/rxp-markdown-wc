@@ -1,0 +1,10 @@
+{
+  "name": "rnp--markdown",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "lit-element": "^2.5.1",
+    "marked": "^3.0.4",
+    "lit-html": "^1.1.2"
+  }
+}
