@@ -43,3 +43,5 @@ Output
   <h2 id="hello-world">Hello World</h2>
 </rnp-markdown>
 ```
+
+We can install it from NPM using *npm i rnp-markdown* and consume it via public/bundle.js
