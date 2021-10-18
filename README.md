@@ -6,9 +6,9 @@ Reusable web component using LitElement and Typescript that can render Markdown.
 
 We can pass the below attribute-
 
-- markdown (Use to add markdown content)
 - clientsideactive (Use to render markdown client side. default is false)
 - targetblanckactive (Use to active target="\_blank" for anchor tag. default is false)
+- markdown (Use to add markdown content)
 - markdownapi (Use to add api end point content)
 
 ### Input
