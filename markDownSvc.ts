@@ -35,6 +35,6 @@ export const setTargetBlank = (val) => (isTargetBlankActive = val);
 
 const configMarkdown = (res) => {
   if (isTargetBlankActive === 'true') {
-    return res.replace('<a', "<a target='_blank' ");
+    return res.replaceAll('<a', "<a target='_blank' ");
   }
 };
