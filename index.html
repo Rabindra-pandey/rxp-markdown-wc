@@ -24,6 +24,12 @@
         document.getElementById('md').setAttribute('markdown', content);
       }
     </script>
-    <rnp-markdown id="md" markdown="## Hello World"> </rnp-markdown>
+    <rnp-markdown
+      id="md"
+      isclientsiderender="true"
+      targetblanckactive="true"
+      markdown="## Hello World"
+    >
+    </rnp-markdown>
   </body>
 </html>

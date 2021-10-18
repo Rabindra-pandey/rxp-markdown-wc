@@ -14,8 +14,8 @@ We can add markdown and markdownapi as attribute within the element
 
 ```html
     <rnp-markdown
-      markdown="## Server Side"
       markdownapi="https://md-api-vert.vercel.app/api/markdown"
+      markdown="## Server Side"
     > </rnp-markdown>
 ```
 
