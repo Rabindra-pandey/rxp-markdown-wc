@@ -5,7 +5,6 @@ let isClientSide = 'false';
 let isTargetBlankActive = 'false';
 
 export const fetchMarkdown = async (markdown, markdownapi) => {
-  configMarkdown();
   if (isClientSide === 'true') {
     return getFromLocal(markdown);
   } else {
@@ -20,28 +19,22 @@ export const fetchMarkdown = async (markdown, markdownapi) => {
       });
 
       const res = await rawResponse.text();
-      return unsafeHTML(res);
+      return unsafeHTML(configMarkdown(res));
     } catch (error) {
       return getFromLocal(markdown);
     }
   }
 };
 
-export const getFromLocal = (markdown) => unsafeHTML(marked(markdown));
+export const getFromLocal = (markdown) =>
+  unsafeHTML(configMarkdown(marked(markdown)));
 
 export const setRenderingFrom = (val) => (isClientSide = val);
 
 export const setTargetBlank = (val) => (isTargetBlankActive = val);
 
-const configMarkdown = () => {
+const configMarkdown = (res) => {
   if (isTargetBlankActive === 'true') {
-    const renderer = new marked.Renderer();
-    renderer.link = function (href, title, text) {
-      const link = marked.Renderer.prototype.link.call(this, href, title, text);
-      return link.replace('<a', "<a target='_blank' ");
-    };
-    marked.setOptions({
-      renderer: renderer,
-    });
+    return res.replace('<a', "<a target='_blank' ");
   }
 };
