@@ -37,4 +37,5 @@ const configMarkdown = (res) => {
   if (isTargetBlankActive === 'true') {
     return res.replaceAll('<a', "<a target='_blank' ");
   }
+  return res;
 };
