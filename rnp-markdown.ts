@@ -1,5 +1,5 @@
 import { LitElement, html, customElement, property } from 'lit-element';
-import { getFromAPI, setRenderingFrom, setTargetBlank } from './markDownSvc';
+import { fetchMarkdown, setRenderingFrom, setTargetBlank } from './markDownSvc';
 import { defaultMarkDownAPI, loading } from './constants';
 
 @customElement('rnp-markdown')
@@ -8,29 +8,29 @@ export class RnpMarkdown extends LitElement {
     super();
     this.markdown = '';
     this.markdownapi = defaultMarkDownAPI;
-    this.result = loading;
-    this.isclientsiderender = '';
+    this._result = loading;
+    this.clientsideactive = '';
     this.targetblanckactive = '';
   }
   @property({ type: String }) markdown;
   @property({ type: String }) markdownapi;
-  @property({ type: String }) result;
-  @property({ type: String }) isclientsiderender;
+  @property({ type: String }) _result;
+  @property({ type: String }) clientsideactive;
   @property({ type: String }) targetblanckactive;
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'targetblanckactive' && newValue === 'true') {
       setTargetBlank(newValue);
-    } else if (name === 'isclientsiderender' && newValue === 'true') {
+    } else if (name === 'clientsideactive' && newValue === 'true') {
       setRenderingFrom(newValue);
     } else if (name === 'markdown') {
-      getFromAPI(newValue, this.markdownapi).then((data) => {
-        this.result = html`${data}`;
+      fetchMarkdown(newValue, this.markdownapi).then((data) => {
+        this._result = html`${data}`;
       });
     }
   }
 
   render() {
-    return this.result;
+    return this._result;
   }
 }

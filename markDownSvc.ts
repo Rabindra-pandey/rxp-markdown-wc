@@ -4,7 +4,7 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 let isClientSide = 'false';
 let isTargetBlankActive = 'false';
 
-export const getFromAPI = async (markdown, markdownapi) => {
+export const fetchMarkdown = async (markdown, markdownapi) => {
   configMarkdown();
   if (isClientSide === 'true') {
     return getFromLocal(markdown);
