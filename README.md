@@ -61,3 +61,42 @@ We can set the attribute using javascript
   <h2 id="hello-world">Hello World</h2>
 </rnp-markdown>
 ```
+
+We can install it from npm using `npm i rnp-markdown` command.
+
+To use this component in angular, we need to install it using the above command and import it into angular main.ts file.
+
+main.ts
+
+```ts
+  import 'rnp-markdown/public/bundle.js';
+```
+
+app.module.ts
+
+```ts
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+```
+
+app.component.html
+
+```html
+  <textarea [(ngModel)]="overRideRate" type="aria" cols="40" rows="5">## Welcome</textarea>
+  <input type="button" (click)="renderMarkDown()" value="Render Markdown" style="display: block; margin: 5px 0">
+
+
+  <rnp-markdown [attr.markdown]="cnt"></rnp-markdown>
+```
+
+app.component.ts
+
+```ts
+  export class AppComponent  {
+    cnt = '## Hello World';
+    overRideRate = "";
+
+    renderMarkDown() {
+      this.cnt = this.overRideRate;
+    }
+  }
+```
