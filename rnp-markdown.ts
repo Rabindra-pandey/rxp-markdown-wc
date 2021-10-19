@@ -13,7 +13,7 @@ export class RnpMarkdown extends LitElement {
     this.markdownapi = defaultMarkDownAPI;
     this._result = loading;
     this.parseonserver = 'false';
-    this.openlinksinnewtab = 'true';
+    this.openlinksinnewtab = 'false';
   }
   @property({ type: String }) markdown;
   @property({ type: String }) markdownapi;
@@ -37,7 +37,7 @@ export class RnpMarkdown extends LitElement {
           }
         );
       } else {
-        this._result = getFromLocal(markdown, this.openlinksinnewtab);
+        this._result = getFromLocal(markdown);
       }
     }
   }

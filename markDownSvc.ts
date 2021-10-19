@@ -19,11 +19,11 @@ export const fetchMarkdown = async (
     const res = await rawResponse.text();
     return unsafeHTML(res);
   } catch (error) {
-    return getFromLocal(markdown, openlinksinnewtab);
+    return getFromLocal(markdown);
   }
 };
 
-export const getFromLocal = (markdown, openlinksinnewtab) => {
+export const getFromLocal = (markdown) => {
   return unsafeHTML(marked(markdown));
 };
 

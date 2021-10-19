@@ -4,16 +4,16 @@ Reusable web component using LitElement and Typescript that can render Markdown.
 
 ## User options
 
-We can pass the below attribute-
+We can pass the below attribute for configration-
 
-- clientsideactive (Use to render markdown client side if we added the value as true. default is false)
-- targetblanckactive (Use to active target="\_blank" for anchor tag if we added the value as true. default is false)
+- parseonserver (Use to render markdown server side if we added the value as true. default is false)
+- openlinksinnewtab (Use to active target="\_blank" for anchor tag if we added the value as true. default is false)
 - markdown (Use to add markdown content)
-- markdownapi (Use to add api end point content)
+- markdownapi (Use to add api end point. If we assigned the parseonserver attribute as true, it will take the default value['https://md-api-vert.vercel.app/api/markdown'] else will take user provided value)
 
 ### Input
 
-Rendering using markdown attribute. It will render server side markdown by default if we passed only markdown attribute or used setAttribute with dynamic content. If any error is there from api end, it will fallback to client side rendering.
+Rendering using markdown attribute. It will render from client side by default if we passed only markdown attribute or used setAttribute for dynamic content. If any error is there from api end, it will fallback to client side rendering.
 
 ```html
     <rnp-markdown markdown="## Hello World"> </rnp-markdown>
@@ -26,20 +26,21 @@ Rendering using markdown attribute. It will render server side markdown by defau
     </script>
 ```
 
-We can add clientsideactive, markdown and targetblanckactive as attribute within the element. By default, it will render the data from server side itself.
+We can add parseonserver, markdown, openlinksinnewtab and markdownapi as attribute within the element. By default, it will render the markdown from client side itself.
 
 ```html
     <rnp-markdown
-      clientsideactive="true"
-      targetblanckactive="true"
+      parseonserver="true"
+      openlinksinnewtab="true"
       markdown="## Server Side"
+      markdownapi="https://md-api-vert.vercel.app/api/markdown"
     > </rnp-markdown>
 ```
 
-We can set the attribute using javascript custom function
+We can set the attribute using javascript as well
 
 ```html
-    <textarea id="markDownSrc" type="aria" cols="30" rows="4">## Welcome to *renderMarkDown*</textarea>
+    <textarea id="markDownSrc" type="aria" cols="40" rows="5">## Welcome to *renderMarkDown*</textarea>
     <input type="button" onclick="renderMarkDown()" value="Render Markdown" style="display: block; margin: 5px 0">
 
     <rnp-markdown id="md"> </rnp-markdown>
