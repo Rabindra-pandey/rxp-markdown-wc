@@ -13,23 +13,36 @@
 [Google](https://google.com)
 </textarea
     >
+    <br />
+    <input type="checkbox" id="parserOnServer" /> Parse on server
+    <br />
+    <input type="checkbox" id="openLinksInNewTab" /> Open links in new tab
+    <br />
     <input
       type="button"
       onclick="renderMarkDown()"
       value="Render Markdown"
-      style="display: block; margin: 5px 0"
+      style="margin: 10px 0"
     />
 
     <script type="module">
       function renderMarkDown() {
         const content = document.getElementById('markDownSrc').value;
-        document.getElementById('md').setAttribute('markdown', content);
+        const parserOnServer =
+          document.getElementById('parserOnServer').checked;
+        const openLinksInNewTab =
+          document.getElementById('openLinksInNewTab').checked;
+        const md = document.getElementById('md');
+
+        md.setAttribute('parseonserver', parserOnServer);
+        md.setAttribute('openlinksinnewtab', openLinksInNewTab);
+        md.setAttribute('markdown', content);
       }
     </script>
     <rnp-markdown
       id="md"
-      clientsideactive="false"
-      targetblanckactive="true"
+      parseonserver="false"
+      openlinksinnewtab="false"
       markdown="## Hello World"
     >
     </rnp-markdown>

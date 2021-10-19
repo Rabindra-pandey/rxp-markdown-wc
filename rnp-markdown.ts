@@ -1,33 +1,51 @@
 import { LitElement, html, customElement, property } from 'lit-element';
-import { fetchMarkdown, setRenderingFrom, setTargetBlank } from './markDownSvc';
+import { fetchMarkdown, getFromLocal, setLinkTarget } from './markDownSvc';
 import { defaultMarkDownAPI, loading } from './constants';
+import { queryAll } from 'lit-element/lib/decorators.js';
 
 @customElement('rnp-markdown')
 export class RnpMarkdown extends LitElement {
+  @queryAll('a') _links;
+
   constructor() {
     super();
     this.markdown = '';
     this.markdownapi = defaultMarkDownAPI;
     this._result = loading;
-    this.clientsideactive = '';
-    this.targetblanckactive = '';
+    this.parseonserver = 'false';
+    this.openlinksinnewtab = 'true';
   }
   @property({ type: String }) markdown;
   @property({ type: String }) markdownapi;
   @property({ type: String }) _result;
-  @property({ type: String }) clientsideactive;
-  @property({ type: String }) targetblanckactive;
+  @property({ type: String }) parseonserver;
+  @property({ type: String }) openlinksinnewtab;
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'targetblanckactive' && newValue === 'true') {
-      setTargetBlank(newValue);
-    } else if (name === 'clientsideactive' && newValue === 'true') {
-      setRenderingFrom(newValue);
-    } else if (name === 'markdown') {
-      fetchMarkdown(newValue, this.markdownapi).then((data) => {
-        this._result = html`${data}`;
-      });
+    if (name === 'openlinksinnewtab') {
+      this.openlinksinnewtab = newValue;
     }
+    if (name === 'parseonserver') {
+      this.parseonserver = newValue;
+    }
+    if (name === 'markdown') {
+      const markdown = name === 'markdown' ? newValue : this.markdown;
+      if (this.parseonserver.toLowerCase() === 'true') {
+        fetchMarkdown(markdown, this.markdownapi, this.openlinksinnewtab).then(
+          (data) => {
+            this._result = html`${data}`;
+          }
+        );
+      } else {
+        this._result = getFromLocal(markdown, this.openlinksinnewtab);
+      }
+    }
+  }
+
+  updated() {
+    const target =
+      this.openlinksinnewtab.toLowerCase() === 'true' ? '_blank' : '';
+    setLinkTarget(this._links, target);
   }
 
   render() {
