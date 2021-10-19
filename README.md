@@ -2,7 +2,11 @@
 
 Reusable web component using LitElement and Typescript that can render Markdown. The component is able to render the Markdown client side, or send the Markdown to an API endpoint to be rendered.
 
-## User options
+### Input
+
+To use the rnp-markdown component, We need to follow the below steps. This component will render markdown from client side by default if we added only markdown attribute or used setAttribute using javascript for the dynamic content. If any error is there from api end, it will fallback to client side rendering.
+
+### User options
 
 We can pass the below attribute for configration-
 
@@ -10,10 +14,6 @@ We can pass the below attribute for configration-
 - **openlinksinnewtab** (Use to active target="\_blank" for anchor tag if we added the value as true. default is false)
 - **markdown** (Use to add markdown content)
 - **markdownapi** (Use to add api end point. If we assigned the parseonserver attribute as true, it will take the default value['https://md-api-vert.vercel.app/api/markdown'] else will take user provided value)
-
-### Input
-
-Rendering using markdown attribute. It will render from client side by default if we passed only markdown attribute or used setAttribute for dynamic content. If any error is there from api end, it will fallback to client side rendering.
 
 ```html
     <rnp-markdown markdown="## Hello World"> </rnp-markdown>
@@ -26,7 +26,7 @@ Rendering using markdown attribute. It will render from client side by default i
     </script>
 ```
 
-We can add parseonserver, openlinksinnewtab, markdown and markdownapi as attribute within the rnp-markdown. By default, it will render the markdown from client side itself.
+We can add parseonserver, openlinksinnewtab, markdown and markdownapi as attribute within the rnp-markdown component. By default, it will render from client side itself.
 
 ```html
     <rnp-markdown
