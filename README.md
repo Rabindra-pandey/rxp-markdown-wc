@@ -6,10 +6,10 @@ Reusable web component using LitElement and Typescript that can render Markdown.
 
 We can pass the below attribute for configration-
 
-- parseonserver (Use to render markdown server side if we added the value as true. default is false)
-- openlinksinnewtab (Use to active target="\_blank" for anchor tag if we added the value as true. default is false)
-- markdown (Use to add markdown content)
-- markdownapi (Use to add api end point. If we assigned the parseonserver attribute as true, it will take the default value['https://md-api-vert.vercel.app/api/markdown'] else will take user provided value)
+- **parseonserver** (Use to render markdown server side if we added the value as true. default is false)
+- **openlinksinnewtab** (Use to active target="\_blank" for anchor tag if we added the value as true. default is false)
+- **markdown** (Use to add markdown content)
+- **markdownapi** (Use to add api end point. If we assigned the parseonserver attribute as true, it will take the default value['https://md-api-vert.vercel.app/api/markdown'] else will take user provided value)
 
 ### Input
 
