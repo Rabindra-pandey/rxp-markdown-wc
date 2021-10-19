@@ -8,7 +8,7 @@ To use the rnp-markdown component, We need to follow the below steps. This compo
 
 ### User options
 
-We can pass the below attribute for configration-
+We can pass the below attribute for configuration-
 
 - **parseonserver** (Use to render markdown server side if we added the value as true. default is false)
 - **openlinksinnewtab** (Use to add target="\_blank" for anchor tag if we added the value as true. default is false)
