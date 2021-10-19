@@ -53,7 +53,7 @@ We can set the attribute using javascript
     </script>
 ```
 
-Output
+### Output
 
 ```html
 <rnp-markdown>
