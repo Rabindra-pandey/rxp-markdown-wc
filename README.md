@@ -26,7 +26,7 @@ Rendering using markdown attribute. It will render from client side by default i
     </script>
 ```
 
-We can add parseonserver, markdown, openlinksinnewtab and markdownapi as attribute within the element. By default, it will render the markdown from client side itself.
+We can add parseonserver, openlinksinnewtab, markdown and markdownapi as attribute within the rnp-markdown. By default, it will render the markdown from client side itself.
 
 ```html
     <rnp-markdown
@@ -37,7 +37,7 @@ We can add parseonserver, markdown, openlinksinnewtab and markdownapi as attribu
     > </rnp-markdown>
 ```
 
-We can set the attribute using javascript as well
+We can set the attribute using javascript
 
 ```html
     <textarea id="markDownSrc" type="aria" cols="40" rows="5">## Welcome to *renderMarkDown*</textarea>
